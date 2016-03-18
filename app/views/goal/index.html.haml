@@ -1,0 +1,16 @@
+.container
+  .row
+    .seven.columns
+      - @goals.each do |i|
+        .card
+          .goal-title
+            %h3= i.name
+          .goal-body
+            %ul
+              - i.tasks.each do |u|
+                %li= u.name  
+    .five.columns
+      .flow
+        %ul.card
+          - @tasks.each do |i|
+            %li=i.name
