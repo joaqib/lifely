@@ -1,5 +1,6 @@
 %h1= @goal.name
 
-%ul
-  - @goal.tasks.each do |i|
-    %li= i.name
+.task_wrapper
+  = render @goal.tasks
+  .form
+    = render "tasks/form" 
