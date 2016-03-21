@@ -1,0 +1,5 @@
+%h1= @goal.name
+
+%ul
+  - @goal.tasks.each do |i|
+    %li= i.name

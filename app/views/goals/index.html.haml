@@ -4,11 +4,12 @@
       - @goals.each do |i|
         .card
           .goal-title
-            %h3= i.name
+            %h3= link_to("#{i.name}", goal_path(i))
           .goal-body
             %ul
               - i.tasks.each do |u|
-                %li= u.name  
+                %li= u.name
+            %p=link_to("new goal", new_goal_path)
     .five.columns
       .flow
         %ul.card

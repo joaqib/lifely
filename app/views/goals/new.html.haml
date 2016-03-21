@@ -1,0 +1,16 @@
+- if @goal.errors.any?
+  %ul
+    - @goal.errors.full_messages.each do |error_msg|
+      %li= error_msg
+
+.card
+  = form_for @goal do |f|
+    = f.label :name
+    = f.text_field :name
+  
+    = f.fields_for :tasks, @task do |ff|
+      = ff.label :name, "Task name"
+      = ff.text_field :name
+
+    = f.submit 'Create new Goal'
+  
