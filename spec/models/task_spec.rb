@@ -1,26 +1,13 @@
 require 'rails_helper'
 
+RSpec.describe Task, type: :model do
+  it "has a valid factory" do
+    expect(FactoryGirl.create(:task)).to be_valid
+  end
+end
+
 RSpec.describe Task do
-
-  let(:task) {Task.new(name: "testTask", dateAssigned: (Date.now), timeAssigned: 2)}
-
-  it "New Task is created" do
-    firstTask = task
-    expect(Task.count).to be(1)
-  end
-
-  it "Task is archived" do
-    firstTask = task
-    firstTask.archive
-    expect(Task.count).to be(1)
-  end
-
-  it "No more than 10 task per goal each week" do
-    firstTask = task
-    firstTask.archive
-    expect(Task.count).to be(1)
-  end
-
-
-
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:hours_planned) }
+    it { is_expected.to validate_presence_of(:goal_id) }
 end

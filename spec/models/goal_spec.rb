@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Goal do
 
-  let(:goal) {Goal.new(name: "test goal")}
-  let(:task) {Task.new(name: "test task", date_assigned: Date.today, hours: 3, goal: goal)}
+  let(:goal) {Goal.create(name: "test goal")}
+  let(:task) {Task.create(name: "test task", date_planned: Date.today, hours_planned: 3, goal: goal.id)}
 
   it "the goal starts empty" do
-    expect(goal.tasks).to be([])
+    expect(goal.tasks).to eq([])
   end
 
   it "the goal have tasks" do
@@ -19,6 +19,7 @@ RSpec.describe Goal do
     expect(goal.weekly_tasks).to be([])
   end
 
+
   it "goal does show new tasks" do
     expect(goal.weekly_tasks.length).to be(1)
   end
@@ -27,17 +28,8 @@ RSpec.describe Goal do
 
     before :each do
       5.times do |i|
-        Task.new(name: "title#{i}", date_assigned: (Date.now - 10),hours: 3, goal: goal)
+        Task.new(name: "title#{i}", date_planned: (Date.today - 10),hours: 3, goal: goal)
       end
-    end
-
-    it "goal does not show more than 10 tasks" do
-      # this is a second confirmation that there is no more than 10 task created for each goal, validation also in Task model
-      15.times do |i|
-        Task.new(name: "title#{i}", date_assigned: (Date.now - 10),hours: 3, goal: goal)
-      end
-
-      expect(goal.weekly_tasks.length).to be(10)
     end
 
     it "Goal hibernate after one week of inactivity" do

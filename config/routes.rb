@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
-  root 'goals#index'
+  devise_for :users
+
+  get '/users', to: 'users#show'
+
+  root 'site#index'
+
+  patch '/:id/archive', to: 'goals#archive'
 
   resources :goals do
     resources :tasks

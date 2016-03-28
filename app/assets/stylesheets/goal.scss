@@ -8,3 +8,35 @@ h1 {
   text-align: center;
   
 }
+
+.title {
+    margin-top: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+
+.main form {
+  padding-left: 2rem;
+}
+
+#task_name {
+  margin-left: 2rem;
+}
+
+#task_name, #task_hours_planned, #task_hours_worked {
+  outline:none; 
+  border:none;
+  margin:0px;
+  padding:0px;
+}
+
+.flow form {
+  margin-left: 1.5rem;
+  display: inline;
+}
+
+.flow ul {
+  list-style: none;
+}

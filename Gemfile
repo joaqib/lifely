@@ -10,6 +10,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem "chartkick"
+gem 'groupdate'
+gem 'devise'
+gem 'whenever', :require => false
+
 
 
 group :development, :test do
@@ -20,8 +25,15 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
 
+end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'database_cleaner', '~> 1.5'
+  gem 'faker', '~> 1.6.1'
 end
 
 group :development do

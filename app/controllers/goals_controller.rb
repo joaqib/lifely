@@ -1,30 +1,27 @@
 class GoalsController < ApplicationController
 
  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+ before_action :authenticate_user!
 
   def index
-    @goals = Goal.all
-    @tasks = Task.all
+    @goals = Goal.where(user_id: current_user, done: false)
+    @goal = current_user.goals.new
   end
 
   def new
-    @goal = Goal.new
+    @goal = current_user.goals.new
     @task = @goal.tasks.new
     
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    @goal = current_user.goals.new(goal_params)
 
-    respond_to do |format|
       if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
-        format.json { render :show, status: :created, location: @goal }
+        redirect_to @goal, notice: 'Goal was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
   end
 
   def archive

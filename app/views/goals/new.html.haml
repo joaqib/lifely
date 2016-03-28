@@ -2,15 +2,17 @@
   %ul
     - @goal.errors.full_messages.each do |error_msg|
       %li= error_msg
+.row
+  .card.four.columns
+    = form_for @goal do |f|
+      = f.label :name
+      = f.text_field :name
+    
+      / = f.fields_for :tasks, @task do |ff|
+      /   = ff.label :name, "Task name"
+      /   = ff.text_field :name
+      /   = ff.label :hours_planned, "Hours planned"
+      /   = ff.number_field :hours_planned, in: 0.5..8, step: 0.5
 
-.card
-  = form_for @goal do |f|
-    = f.label :name
-    = f.text_field :name
-  
-    = f.fields_for :tasks, @task do |ff|
-      = ff.label :name, "Task name"
-      = ff.text_field :name
-
-    = f.submit 'Create new Goal'
-  
+      = f.submit 'Create new Goal'
+    
