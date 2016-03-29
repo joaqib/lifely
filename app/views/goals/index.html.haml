@@ -3,7 +3,8 @@
     .seven.columns
       - @goals.each do |goal|
         .card.main
-          %h5.title= link_to("#{goal.name}", goal_path(goal))
+          .title
+            %h5= link_to("#{goal.name}", goal_path(goal))
           .goal-body{id: "goal_#{goal.id}"}
             %ul
               - goal.tasks.each do |task|
@@ -12,8 +13,8 @@
             .form{id: "goal_#{goal.id}"}= render partial: "tasks/form", locals: { goal: goal, task: goal.tasks.build }
       
       -if @goals.count < 3
-        .card.main
-          %h5.title= link_to("New Goal", new_goal_path)
+        .card.main.new
+          %h5= render partial: "goals/new", locals: { goal: Goal.new}
 
     .five.columns
       .flow

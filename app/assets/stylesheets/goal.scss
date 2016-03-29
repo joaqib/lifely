@@ -4,19 +4,34 @@
 
 @import 'card';
 
-h1 {
-  text-align: center;
-  
+h1{
+  display: inline;
+  margin-left: 10%; 
+}
+
+.new_goal {
+  margin-left: 3.5rem;
 }
 
 .title {
     margin-top: 0px;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding-top: 1rem;
+    padding-left: 2rem;
     margin-bottom: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 0rem;
+    background-color: #f1c40f;
 }
 
+.flow .title {
+  background-color: #1abc9c;
+}
+
+.card a, .card h5 {
+  color: white;
+}
+.goal-body {
+  padding-left: 3rem;
+}
 .main form {
   padding-left: 2rem;
 }
@@ -37,6 +52,43 @@ h1 {
   display: inline;
 }
 
-.flow ul {
+.new {
+  border-top: 10px solid #f1c40f;
+  padding-top: 2rem;
+}
+
+.new h5 {
+  color: black;
+}
+
+.new h5 {
+  margin-bottom: 0px; 
+}
+
+button {
+  color: red;
+  font-size: 20px;
+}
+
+.flow table {
   list-style: none;
+  margin-left: 2rem;
+}
+
+.green {
+  color: #2ecc71;
+}
+
+.archive {
+  display: inline;
+  float: right;
+  margin-right: 15rem;
+}
+
+.archive a {
+  color: #7f8c8d;
+}
+
+.show {
+  margin-top: 8rem;
 }

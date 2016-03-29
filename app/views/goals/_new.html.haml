@@ -1,0 +1,8 @@
+%tr
+  %td
+    = form_for @goal do |f|
+      = f.text_field :name, placeholder: "New Goal Name"
+      = f.button  class: "btn" do
+        %i.fa.fa-bookmark
+
+

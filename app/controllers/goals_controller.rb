@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
 
- before_action :set_goal, except: [:index]
+ before_action :set_goal, except: [:index, :new, :create]
  before_action :authenticate_user!
 
   def index
@@ -15,11 +15,10 @@ class GoalsController < ApplicationController
 
   def create
     @goal = current_user.goals.new(goal_params)
-
-    if @goal.save
-      redirect_to @goal, notice: 'Goal was successfully created.'
-    else
-      render :new 
+    @goal.save
+    respond_to do |format|
+      format.html { redirect_to goals_path }
+      format.js
     end
   end
 

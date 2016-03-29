@@ -1,16 +1,19 @@
 = javascript_include_tag "https://www.google.com/jsapi", "chartkick"
-%h1= @goal.name
+%div
+  %h1
+    = @goal.name
+    %span.archive
+      = link_to "/#{@goal.id}/archive", method: :patch do
+        %i.fa.fa-floppy-o
 
-.row
-  .six.columns
-    .card.main
-      = line_chart [{name: "Worked", data: @goal.tasks.group_by_week(:date_planned).sum(:hours_worked)}, {name: "Planned", data: @goal.tasks.group_by_week(:date_planned).sum(:hours_planned)}]
+.container
+  .row.show
+    .six.columns
+      .card.main
+        = line_chart [{name: "Worked", data: @goal.tasks.group_by_week(:date_planned).sum(:hours_worked)}, {name: "Planned", data: @goal.tasks.group_by_week(:date_planned).sum(:hours_planned)}]
 
-  .six.columns
-    .card.main
-      = bar_chart [{name: "Worked", data: @goal.tasks.group(:goal_id).sum(:hours_worked)}, {name: "Planned", data: @goal.tasks.group(:goal_id).sum(:hours_planned)}]
-
-%p= button_to("archive goal", "/#{@goal.id}/archive", method: :patch)
-
+    .six.columns
+      .card.main
+        = bar_chart [{name: "Worked", data: @goal.tasks.group(:goal_id).sum(:hours_worked)}, {name: "Planned", data: @goal.tasks.group(:goal_id).sum(:hours_planned)}]
 
 
