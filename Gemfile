@@ -14,7 +14,6 @@ gem "chartkick"
 gem 'groupdate'
 gem 'devise'
 gem 'whenever', :require => false
-gem 'simple_form'
 
 
 

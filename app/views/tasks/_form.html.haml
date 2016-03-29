@@ -1,4 +1,4 @@
-= simple_form_for [goal, task], remote: true do |f|
-  = f.input :name, placeholder: "New Task", label: false
-  = f.input :hours_planned, in: 0.5..8, step: 0.5, as: :decimal, label: false
-  = f.button(:submit, "Save")
+= form_for [goal, task], remote: true do |f|
+  = f.text_field :name, placeholder: "New Task"
+  = f.number_field :hours_planned, in: 0.5..8, step: 0.5
+  = f.submit ("Save")

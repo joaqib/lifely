@@ -1,6 +1,6 @@
 %tr
   %td= task.name
   %td
-    = simple_form_for [goal, task], remote: true, class: "form-search"  do |f|
-      = f.input :hours_worked, in: 0.5..8, step: 0.5, value: task.hours_planned, as: :decimal, label: false
-      = f.button(:submit, "Done")
+    = form_for [goal, task], remote: true, class: "form-search"  do |f|
+      = f.number_field :hours_worked, in: 0.5..8, step: 0.5, value: task.hours_planned
+      = f.submit("Done")

@@ -1,2 +1,4 @@
-$("#edit_task_<%= @task.id %>").parent().parent().fadeOut( "slow", function() {});
-$("ul > #task_<%=@task.id%>").fadeOut( "slow", function() {});
+<% if @task.valid? %>
+  $("#edit_task_<%= @task.id %>").parent().parent().fadeOut( "slow", function() {});
+  $("ul > #task_<%=@task.id%>").fadeOut( "slow", function() {}); 
+<% end %>
