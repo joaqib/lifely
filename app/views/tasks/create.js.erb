@@ -1,9 +1,9 @@
 <% if @task.valid? %>
   $("#goal_<%= @goal.id %> > ul").fadeOut( "slow", function() {
-    $("#goal_<%= @goal.id %> > ul").append("<li><%= @task.name %></li>");    
+    $("#goal_<%= @goal.id %> > ul").append("<li id='task_<%=@task.id %>'><%= @task.name %></li>");    
   });
   $("#goal_<%= @goal.id %> > ul").fadeIn( "slow");
-  $("#goal_<%= @goal.id %> > .form").html("<%= escape_javascript(render partial: 'tasks/form', locals: {goal: @goal, task: @task}) %>");
+  $("#goal_<%= @goal.id %> > .form").html("<%= escape_javascript(render partial: 'tasks/form', locals: {goal: @goal, task: @goal.tasks.build}) %>");
   $('table').append("<%= escape_javascript(render partial: 'tasks/done_form', locals: {goal: @goal, task: @task}) %>")
   $("td:last").show( "slow");
 <% else %>
