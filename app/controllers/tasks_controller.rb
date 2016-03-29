@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def create
     @task = @goal.tasks.create(task_params)
     @task.save
-    redirect_to_back
+    redirect_to goals_path
   end
 
   def update
@@ -24,14 +24,6 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :hours_planned, :hours_worked)
-  end
-
-  def redirect_to_back(default = root_url)
-    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-      redirect_to :back
-    else
-      redirect_to default
-    end
   end
 end
  
