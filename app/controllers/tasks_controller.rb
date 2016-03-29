@@ -5,12 +5,19 @@ class TasksController < ApplicationController
   def create
     @task = @goal.tasks.create(task_params)
     @task.save
-    redirect_to goals_path
+
+    respond_to do |format|
+      format.html { redirect_to goals_path }
+      format.js
+    end
   end
 
   def update
-    @task.update_attributes(done: true, hours_worked: params[:task][:hours_worked])
-    redirect_to :back, notice: "Task completed"
+    @task.update_attributes!(done: true, hours_worked: params[:task][:hours_worked])
+    respond_to do |format|
+      format.html { redirect_to goals_path }
+      format.js
+    end
   end
 
   private

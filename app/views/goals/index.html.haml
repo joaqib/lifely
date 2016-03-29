@@ -1,17 +1,16 @@
 .container
   .row
     .seven.columns
-      - @goals.each do |i|
-        - @goal = i
+      - @goals.each do |goal|
         .card.main
-          %h5.title= link_to("#{i.name}", goal_path(i))
-          .goal-body
+          %h5.title= link_to("#{goal.name}", goal_path(goal))
+          .goal-body{id: "goal_#{goal.id}"}
             %ul
-              - i.tasks.each do |u|
-                -if !u.done
-                  %li= u.name
-              .form
-                = render "tasks/form"
+              - goal.tasks.each do |task|
+                -if !task.done
+                  %li{id:"task_#{task.id}"}= task.name
+            .form{id: "goal_#{goal.id}"}= render partial: "tasks/form", locals: { goal: goal, task: goal.tasks.build }
+      
       -if @goals.count < 3
         .card.main
           %h5.title= link_to("New Goal", new_goal_path)
@@ -20,10 +19,7 @@
       .flow
         .card
           %h5.title Flow
-          %ul
-            - @goals.each do |i|
-              - @goal = i
-              - @goal.tasks.each do |u|
-                -@task = u
-                -if @task.id? && !@task.done?
-                  %li= render "tasks/done_form"
+          %table
+            - @goals.each do |goal|
+              - goal.tasks.where.not(id: nil).not_done.each do |task|
+                .form{id: "goal_#{goal.id}"}= render partial: "tasks/done_form", locals: { goal: goal, task: task }

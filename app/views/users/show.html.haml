@@ -7,4 +7,5 @@
     .card
       = line_chart @goals.map { |goal| {name: goal.name, data: goal.tasks.group_by_week(:date_planned).sum(:hours_worked)}}
   .six.columns
-    %h3 Number of Hours Worked in your Goals
+    .card
+      = pie_chart @goals.map { |goal| {name: goal.name, data: goal.tasks.count}}

@@ -24,3 +24,12 @@ html{
 body {
   font-size: 1.6rem;
 }
+
+.field_with_errors {
+  display: inline;
+  color: red;
+}
+
+.field_with_errors input {
+  border: 1px solid red;
+}

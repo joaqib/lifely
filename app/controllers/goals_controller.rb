@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
  before_action :authenticate_user!
 
   def index
-    @goals = Goal.where(user_id: current_user, done: false)
+    @goals = Goal.current_goals(current_user)
     @goal = current_user.goals.new
   end
 

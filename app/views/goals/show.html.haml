@@ -9,7 +9,8 @@
   .six.columns
     .card.main
       = bar_chart [{name: "Worked", data: @goal.tasks.group(:goal_id).sum(:hours_worked)}, {name: "Planned", data: @goal.tasks.group(:goal_id).sum(:hours_planned)}]
-.p= link_to("archive goal", "/#{@goal.id}/archive", method: :patch)
+
+%p= button_to("archive goal", "/#{@goal.id}/archive", method: :patch)
 
 
 

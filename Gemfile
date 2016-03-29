@@ -14,6 +14,7 @@ gem "chartkick"
 gem 'groupdate'
 gem 'devise'
 gem 'whenever', :require => false
+gem 'simple_form'
 
 
 
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'quiet_assets'
 
 end
 
