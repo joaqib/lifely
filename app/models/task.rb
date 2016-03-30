@@ -2,7 +2,7 @@ class Task < ActiveRecord::Base
   belongs_to :goal
 
   validates :hours_planned, numericality: { greater_than_or_equal_to: 0.5, less_than: 8}
-  validates_presence_of :name
+  validates_presence_of :name, :hours_planned, :goal_id
   validates :goal_id, numericality: {only_integer: true}
 
   scope :done, -> { where(done: true) }

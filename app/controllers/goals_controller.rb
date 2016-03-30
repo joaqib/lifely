@@ -8,11 +8,6 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.new
   end
 
-  def new
-    @goal = current_user.goals.new
-    @task = @goal.tasks.new
-  end
-
   def create
     @goal = current_user.goals.new(goal_params)
     @goal.save

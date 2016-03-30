@@ -14,7 +14,6 @@
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
-require 'capybara/rspec'
 RSpec.configure do |config|
 end
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

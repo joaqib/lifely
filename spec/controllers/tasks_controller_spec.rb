@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
 
-  
-  let(:user) { FactoryGirl.create(:user) }
+  before(:all) do
+    User.create(email: "a@a.com", password: "12345678", password_confirmation: "12345678")
+  end
+
   let(:goal) { FactoryGirl.create(:goal) }
 
   describe "POST #create" do
