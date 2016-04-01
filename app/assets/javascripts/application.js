@@ -21,7 +21,6 @@ $(document).ready( function () {
 var navMovement = function () {
   $(".openNav").click(function() {
   $("body").toggleClass("navOpen");
-  console.log("FUCK YOU")
   $("nav").toggleClass("open");
   $(".wrapper").toggleClass("open");
   $(this).toggleClass("open");
